@@ -85,7 +85,7 @@ public class ProfilerExtension extends org.nlogo.api.DefaultClassManager {
 
   public static class ProfilerReport extends DefaultReporter {
     public Syntax getSyntax() {
-      return Syntax.reporterSyntax(Syntax.TYPE_LIST);
+      return Syntax.reporterSyntax(Syntax.ListType());
     }
 
     public Object report(Argument args[], Context context) throws ExtensionException {
@@ -103,8 +103,8 @@ public class ProfilerExtension extends org.nlogo.api.DefaultClassManager {
   public static class ProfilerProcedureCalls extends DefaultReporter {
     public Syntax getSyntax() {
       return Syntax.reporterSyntax
-          (new int[]{Syntax.TYPE_STRING},
-              Syntax.TYPE_NUMBER);
+          (new int[]{Syntax.StringType()},
+              Syntax.NumberType());
     }
 
     public Object report(Argument args[], Context context) throws ExtensionException, LogoException {
@@ -120,8 +120,8 @@ public class ProfilerExtension extends org.nlogo.api.DefaultClassManager {
   public static class ProfilerProcedureExclusiveTime extends DefaultReporter {
     public Syntax getSyntax() {
       return Syntax.reporterSyntax
-          (new int[]{Syntax.TYPE_STRING},
-              Syntax.TYPE_NUMBER);
+          (new int[]{Syntax.StringType()},
+              Syntax.NumberType());
     }
 
     public Object report(Argument args[], Context context) throws ExtensionException, LogoException {
@@ -137,8 +137,8 @@ public class ProfilerExtension extends org.nlogo.api.DefaultClassManager {
   public static class ProfilerProcedureInclusiveTime extends DefaultReporter {
     public Syntax getSyntax() {
       return Syntax.reporterSyntax
-          (new int[]{Syntax.TYPE_STRING},
-              Syntax.TYPE_NUMBER);
+          (new int[]{Syntax.StringType()},
+              Syntax.NumberType());
     }
 
     public Object report(Argument args[], Context context) throws ExtensionException, LogoException {
