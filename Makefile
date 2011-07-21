@@ -10,10 +10,16 @@ ifeq ($(origin SCALA_JAR), undefined)
   SCALA_JAR=$(NETLOGO)/lib/scala-library.jar
 endif
 
-JAVAC=$(JAVA_HOME)/bin/javac
 SRCS=$(wildcard src/*.java)
 
-profiler.jar: $(SRCS) manifest.txt Makefile
+profiler.jar: $(SRCS) manifest.txt
 	mkdir -p classes
-	$(JAVAC) -g -deprecation -Xlint:all -Xlint:-serial -Xlint:-path -encoding us-ascii -source 1.5 -target 1.5 -classpath $(NETLOGO)/NetLogo.jar:$(SCALA_JAR) -d classes $(SRCS)
+	$(JAVA_HOME)/bin/javac -g -encoding us-ascii -source 1.5 -target 1.5 -classpath $(NETLOGO)/NetLogo.jar:$(SCALA_JAR) -d classes $(SRCS)
 	jar cmf manifest.txt profiler.jar -C classes .
+
+profiler.zip: profiler.jar
+	rm -rf profiler
+	mkdir profiler
+	cp -rp profiler.jar README.md Makefile src manifest.txt profiler
+	zip -rv profiler.zip profiler
+	rm -rf profiler
