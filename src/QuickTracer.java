@@ -1,5 +1,3 @@
-// (c) 2007-2011 Uri Wilensky. See README.md for terms of use.
-
 package org.nlogo.extensions.profiler;
 
 import java.util.HashMap;
