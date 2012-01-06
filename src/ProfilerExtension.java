@@ -45,7 +45,7 @@ public class ProfilerExtension extends org.nlogo.api.DefaultClassManager {
 
     public void perform(Argument args[], Context context) throws ExtensionException {
 
-      if (Boolean.getBoolean("org.nlogo.noGenerator")) {
+      if (!org.nlogo.api.Version.useGenerator()) {
         throw new ExtensionException
             ("The profiler extension requires the NetLogo bytecode generator, "
                 + "which is currently turned off. See the org.nlogo.noGenerator property.");
