@@ -12,7 +12,7 @@ ifeq ($(origin SCALA_JAR), undefined)
   SCALA_JAR=$(NETLOGO)/lib/scala-library.jar
 endif
 
-ifeq (,$(findstring Cygwin,$(shell uname)))
+ifeq ($(shell uname -o),Cygwin)
   COLON=\;
   JAVA_HOME := `cygpath -up "$(JAVA_HOME)"`
   NETLOGO_JAR:=`cygpath -w "$(NETLOGO)"/"$(NL_JAR_NAME)"`
