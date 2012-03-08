@@ -16,7 +16,7 @@ ifneq (,$(findstring CYGWIN,$(shell uname -s)))
   COLON=\;
   JAVA_HOME := `cygpath -up "$(JAVA_HOME)"`
   NETLOGO_JAR:=`cygpath -w "$(NETLOGO)"/"$(NL_JAR_NAME)"`
-  SCALA_JAR:=`cygpath -w "$(NETLOGO)"/"$(SCALA_JAR)"`
+  SCALA_JAR:=`cygpath -w "$(SCALA_JAR)"`
 else
   COLON=:
   NETLOGO_JAR:=$(NETLOGO)/$(NL_JAR_NAME)
