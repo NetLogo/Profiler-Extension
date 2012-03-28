@@ -8,7 +8,7 @@ ifeq ($(origin NETLOGO), undefined)
   NETLOGO=../..
 endif
 
-ifeq ($(origin SCALA_JAR), undefined)
+ifneq (,$(findstring CYGWIN,$(shell uname -s)))
   SCALA_JAR=$(NETLOGO)/lib/scala-library.jar
 endif
 
@@ -24,14 +24,15 @@ endif
 
 SRCS=$(wildcard src/*.java)
 
-profiler.jar: $(SRCS) manifest.txt
+profiler.jar profiler.jar.pack.gz: $(SRCS) manifest.txt
 	mkdir -p classes
 	$(JAVA_HOME)/bin/javac -g -encoding us-ascii -source 1.5 -target 1.5 -classpath $(NETLOGO_JAR)$(COLON)$(SCALA_JAR) -d classes $(SRCS)
 	jar cmf manifest.txt profiler.jar -C classes .
+	pack200 --modification-time=latest --effort=9 --strip-debug --no-keep-file-order --unknown-attribute=strip profiler.jar.pack.gz profiler.jar
 
 profiler.zip: profiler.jar
 	rm -rf profiler
 	mkdir profiler
-	cp -rp profiler.jar README.md Makefile src manifest.txt profiler
+	cp -rp profiler.jar profiler.jar.pack.gz README.md Makefile src manifest.txt profiler
 	zip -rv profiler.zip profiler
 	rm -rf profiler
