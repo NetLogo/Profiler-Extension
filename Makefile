@@ -9,7 +9,9 @@ ifeq ($(origin NETLOGO), undefined)
 endif
 
 ifneq (,$(findstring CYGWIN,$(shell uname -s)))
-  SCALA_JAR=$(NETLOGO)/lib/scala-library.jar
+  ifeq ($(origin SCALA_JAR), undefined)
+    SCALA_JAR=$(NETLOGO)/lib/scala-library.jar
+  endif
 endif
 
 ifneq (,$(findstring CYGWIN,$(shell uname -s)))
