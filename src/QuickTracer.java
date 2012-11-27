@@ -41,7 +41,7 @@ public class QuickTracer extends org.nlogo.nvm.Tracer {
     r.callcount = 0;
     records.put(p, r);
     if (p != null) {
-      procedureNames.put(p.name.toUpperCase(), p);
+      procedureNames.put(p.name().toUpperCase(), p);
     }
     return r;
   }
@@ -186,7 +186,7 @@ public class QuickTracer extends org.nlogo.nvm.Tracer {
 
   private void dumpProcedure(java.io.PrintStream s, Record r) {
     s.format("%-30s%10d %10.3f %10.3f %10.3f\n",
-        r.procedure.name,
+        r.procedure.name(),
         r.callcount,
         (double) r.inclusive / 1000000.0,
         (double) r.exclusive / 1000000.0,
