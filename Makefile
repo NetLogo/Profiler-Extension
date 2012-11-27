@@ -13,7 +13,7 @@ SRCS=$(wildcard src/*.java)
 
 profiler.jar profiler.jar.pack.gz: $(SRCS) manifest.txt NetLogoHeadless.jar scala-library-2.9.2.jar
 	mkdir -p classes
-	$(JAVA_HOME)/bin/javac -g -encoding us-ascii -source 1.5 -target 1.5 -classpath NetLogoHeadless.jar$(COLON)scala-library-2.9.2.jar -d classes $(SRCS)
+	$(JAVA_HOME)/bin/javac -g -encoding us-ascii -source 1.6 -target 1.6 -classpath NetLogoHeadless.jar$(COLON)scala-library-2.9.2.jar -d classes $(SRCS)
 	jar cmf manifest.txt profiler.jar -C classes .
 	pack200 --modification-time=latest --effort=9 --strip-debug --no-keep-file-order --unknown-attribute=strip profiler.jar.pack.gz profiler.jar
 
