@@ -2,3 +2,5 @@
 *.jar.pack.gz
 /classes
 /profiler.zip
+/project/project
+target/
