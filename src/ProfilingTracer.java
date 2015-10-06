@@ -18,7 +18,7 @@ public class ProfilingTracer extends org.nlogo.nvm.Tracer {
   public Hashtable<String, Long> callCounts;
 
   private Hashtable<Activation, CallRecord> openRecords;
-  private Vector callRoots;
+  private Vector<ProcedureCallRecord> callRoots;
 
   public ProfilingTracer() {
     super();
@@ -100,7 +100,7 @@ public class ProfilingTracer extends org.nlogo.nvm.Tracer {
     inclusiveTimes = new Hashtable<String, Long>();
     exclusiveTimes = new Hashtable<String, Long>();
     callCounts = new Hashtable<String, Long>();
-    callRoots = new Vector();
+    callRoots = new Vector<ProcedureCallRecord>();
   }
 
 
@@ -118,13 +118,13 @@ public class ProfilingTracer extends org.nlogo.nvm.Tracer {
   }
 
   public void dumpSortedBy(Hashtable<String, Long> sortOn, java.io.PrintStream stream) {
-    TreeSet<Map.Entry> sortedSet = new TreeSet<Map.Entry>(new DescendingMapEntryComparator());
+    TreeSet<Map.Entry<String, Long>> sortedSet = new TreeSet<Map.Entry<String, Long>>(new DescendingMapEntryComparator());
     sortedSet.addAll(sortOn.entrySet());
 
     stream.format("%-30s%10s %10s %10s %10s\n",
         "Name", "Calls", "Incl T(ms)", "Excl T(ms)", "Excl/calls");
 
-    java.util.Iterator it = sortedSet.iterator();
+    java.util.Iterator<Map.Entry<String, Long>> it = sortedSet.iterator();
     while (it.hasNext())
       this.dumpProcedure((String) ((Map.Entry) it.next()).getKey(), stream);
 
@@ -173,10 +173,10 @@ public class ProfilingTracer extends org.nlogo.nvm.Tracer {
     return 0;
   }
 
-  class DescendingMapEntryComparator implements Comparator<Map.Entry> {
-    public int compare(Map.Entry e1, Map.Entry e2) {
-      Long val1 = (Long) e1.getValue();
-      Long val2 = (Long) e2.getValue();
+  class DescendingMapEntryComparator implements Comparator<Map.Entry<String, Long>> {
+    public int compare(Map.Entry<String, Long> e1, Map.Entry<String, Long> e2) {
+      Long val1 = e1.getValue();
+      Long val2 = e2.getValue();
 
       return val2.compareTo(val1);
     }
