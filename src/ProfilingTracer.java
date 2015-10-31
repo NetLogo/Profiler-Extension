@@ -56,7 +56,7 @@ public class ProfilingTracer extends org.nlogo.nvm.Tracer {
 
     if (record == null) {
       if (Boolean.getBoolean("org.nlogo.profiler.verbose")) {
-        System.err.println("Cannot find record for: " + activation.procedure.name);
+        System.err.println("Cannot find record for: " + activation.procedure.name());
       }
       // return if we can't find the record
       return;

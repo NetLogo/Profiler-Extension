@@ -5,8 +5,8 @@ public class ProcedureCallRecord extends CallRecord {
   public int pos;
 
   public ProcedureCallRecord(org.nlogo.nvm.Procedure proc, String agent, String[] argDescriptions) {
-    super(proc.name, agent, argDescriptions);
-    this.pos = proc.pos;
+    super(proc.name(), agent, argDescriptions);
+    this.pos = proc.pos();
     this.argDescriptions = argDescriptions;
   }
 }
