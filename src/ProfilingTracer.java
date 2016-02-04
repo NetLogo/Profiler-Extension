@@ -30,21 +30,24 @@ public class ProfilingTracer extends org.nlogo.nvm.Tracer {
     if (!enabled) return;
 
     long startTime = System.nanoTime();
-    ProcedureCallRecord record = new ProcedureCallRecord(activation.procedure,
+    ProcedureCallRecord record = new ProcedureCallRecord(activation.procedure(),
         context.agent.toString(),
         null);
     record.startTime = startTime;
 
-    // find parent call
-    ProcedureCallRecord parent = (ProcedureCallRecord) openRecords.get(activation.parent);
-    if (parent == null) {
-      // we don't keep call tree data around right now
-      //callRoots.add( record ) ;
-    } else {
-      record.caller = parent;
-      parent.called.add(record);
+    scala.Option<Activation> maybeParent = activation.parent();
+    if (maybeParent.nonEmpty()) {
+      // find parent call
+      ProcedureCallRecord parent = (ProcedureCallRecord) openRecords.get(maybeParent.get());
+      if (parent == null) {
+        // we don't keep call tree data around right now
+        //callRoots.add( record ) ;
+      } else {
+        record.caller = parent;
+        parent.called.add(record);
+      }
+      openRecords.put(activation, record);
     }
-    openRecords.put(activation, record);
   }
 
   public void closeCallRecord(Context context, Activation activation) {
@@ -56,7 +59,7 @@ public class ProfilingTracer extends org.nlogo.nvm.Tracer {
 
     if (record == null) {
       if (Boolean.getBoolean("org.nlogo.profiler.verbose")) {
-        System.err.println("Cannot find record for: " + activation.procedure.name());
+        System.err.println("Cannot find record for: " + activation.procedure().name());
       }
       // return if we can't find the record
       return;
