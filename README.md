@@ -53,6 +53,14 @@ Thanks to Roger Peppe for his contributions to the code.
 
 ## Primitives
 
+[`profiler:calls`](#profilercalls)
+[`profiler:exclusive-time`](#profilerexclusive-time)
+[`profiler:inclusive-time`](#profilerinclusive-time)
+[`profiler:start`](#profilerstart)
+[`profiler:stop`](#profilerstop)
+[`profiler:reset`](#profilerreset)
+[`profiler:report`](#profilerreport)
+
 
 ### `profiler:calls`
 
