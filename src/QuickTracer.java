@@ -83,7 +83,7 @@ public class QuickTracer extends org.nlogo.nvm.Tracer {
   public void openCallRecord(Context context, Activation activation) {
     if (enabled) {
       long t = System.nanoTime();
-      Procedure p = activation.procedure();
+      Procedure p = activation.procedure;
       Record r = records.get(p);
       if (r == null) {
         r = addProcedure(p, t);
@@ -101,7 +101,7 @@ public class QuickTracer extends org.nlogo.nvm.Tracer {
   public void closeCallRecord(Context context, Activation activation) {
     if (enabled) {
       long t = System.nanoTime();
-      Record r = records.get(activation.procedure());
+      Record r = records.get(activation.procedure);
       // we can get close without open if profiler is started within a procedure.
       if (r != null) {
         if (--r.running == 0) {
@@ -109,7 +109,7 @@ public class QuickTracer extends org.nlogo.nvm.Tracer {
         }
         current.exclusive += t - resumetime;
         frame = activation.parent().getOrElse(null);
-        current = records.get(frame.procedure());
+        current = records.get(frame.procedure);
         // if we're ascending to a procedure we didn't start in,
         // substitute our own top-level instead.
         if (current == null || current.running == 0) {

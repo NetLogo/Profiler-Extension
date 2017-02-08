@@ -30,7 +30,7 @@ public class ProfilingTracer extends org.nlogo.nvm.Tracer {
     if (!enabled) return;
 
     long startTime = System.nanoTime();
-    ProcedureCallRecord record = new ProcedureCallRecord(activation.procedure(),
+    ProcedureCallRecord record = new ProcedureCallRecord(activation.procedure,
         context.agent.toString(),
         null);
     record.startTime = startTime;
@@ -59,7 +59,7 @@ public class ProfilingTracer extends org.nlogo.nvm.Tracer {
 
     if (record == null) {
       if (Boolean.getBoolean("org.nlogo.profiler.verbose")) {
-        System.err.println("Cannot find record for: " + activation.procedure().name());
+        System.err.println("Cannot find record for: " + activation.procedure.name());
       }
       // return if we can't find the record
       return;
