@@ -9,7 +9,7 @@ netLogoTarget :=
 
 netLogoZipSources   := false
 
-javaSource in Compile <<= baseDirectory(_ / "src")
+javaSource in Compile := baseDirectory.value / "src"
 
 javacOptions ++= Seq("-g", "-Xlint:deprecation", "-Xlint:all", "-Xlint:-serial", "-Xlint:-path",
   "-encoding", "us-ascii")
