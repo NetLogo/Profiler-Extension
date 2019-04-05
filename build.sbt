@@ -2,7 +2,7 @@ enablePlugins(org.nlogo.build.NetLogoExtension, org.nlogo.build.ExtensionDocumen
 
 name := "profiler"
 
-version := "1.1.0"
+version := "1.1.1"
 
 netLogoClassManager := "org.nlogo.extensions.profiler.ProfilerExtension"
 
@@ -16,4 +16,4 @@ javaSource in Compile := baseDirectory.value / "src"
 javacOptions ++= Seq("-g", "-Xlint:deprecation", "-Xlint:all", "-Xlint:-serial", "-Xlint:-path",
   "-encoding", "us-ascii")
 
-netLogoVersion := "6.0.4-9328ba6"
+netLogoVersion := "6.1.0-RC1"
