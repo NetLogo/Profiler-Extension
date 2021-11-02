@@ -1,10 +1,12 @@
 package org.nlogo.extensions.profiler;
 
+import java.util.Collections;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Comparator;
 import java.util.Arrays;
 
+import java.util.Set;
 import org.nlogo.nvm.Activation;
 import org.nlogo.nvm.Context;
 import org.nlogo.nvm.Procedure;
@@ -211,5 +213,9 @@ public class QuickTracer extends org.nlogo.nvm.Tracer {
       return records.get(proc);
     }
     return new Record();
+  }
+
+  public Set<String> procedureNames() {
+    return Collections.unmodifiableSet(procedureNames.keySet());
   }
 }

@@ -1,25 +1,27 @@
 package org.nlogo.extensions.profiler;
 
+import java.util.Arrays;
+import java.util.stream.Stream;
+import org.nlogo.core.LogoList;
 import org.nlogo.core.Syntax;
 import org.nlogo.core.SyntaxJ;
 import org.nlogo.api.Context;
 import org.nlogo.api.Command;
 import org.nlogo.api.Reporter;
 import org.nlogo.api.Argument;
-import org.nlogo.api.Context;
 import org.nlogo.api.ExtensionException;
 import org.nlogo.api.LogoException;
 import org.nlogo.nvm.ExtensionContext;
 import org.nlogo.nvm.Tracer;
-import org.nlogo.nvm.ExtensionContext;
+import org.nlogo.nvm.Workspace;
 
 public class ProfilerExtension extends org.nlogo.api.DefaultClassManager {
   public void load(org.nlogo.api.PrimitiveManager primManager) {
-
     primManager.addPrimitive("start", new ProfilerStart());
     primManager.addPrimitive("stop", new ProfilerStop());
     primManager.addPrimitive("reset", new ProfilerReset());
     primManager.addPrimitive("report", new ProfilerReport());
+    primManager.addPrimitive("data", new ProfilerData());
     primManager.addPrimitive("calls", new ProfilerProcedureCalls());
     primManager.addPrimitive("exclusive-time", new ProfilerProcedureExclusiveTime());
     primManager.addPrimitive("inclusive-time", new ProfilerProcedureInclusiveTime());
@@ -96,6 +98,32 @@ public class ProfilerExtension extends org.nlogo.api.DefaultClassManager {
         return outArray.toString();
       }
       return "";
+    }
+  }
+
+  public static class ProfilerData implements Reporter {
+    public Syntax getSyntax() {
+      return SyntaxJ.reporterSyntax(Syntax.ListType());
+    }
+
+    public Object report(Argument args[], Context context) {
+      final Workspace workspace = ((ExtensionContext) context).workspace();
+      final QuickTracer tracer = ((QuickTracer) workspace.profilingTracer());
+      return tracer == null
+        ? LogoList.Empty()
+        : LogoList.fromJava(Stream.concat(
+          Stream.of(LogoList.fromJava(Arrays.asList(
+            "procedure", "calls", "inclusive_time", "exclusive_time"
+          ))),
+          tracer.procedureNames().stream().map(procedureName ->
+            (Object) LogoList.fromJava(Arrays.asList(
+              procedureName,
+              Double.valueOf(tracer.calls(procedureName)),
+              Double.valueOf(tracer.inclusiveTime(procedureName)),
+              Double.valueOf(tracer.exclusiveTime(procedureName))
+            ))
+          )
+        )::iterator);
     }
   }
 
