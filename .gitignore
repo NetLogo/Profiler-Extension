@@ -5,3 +5,4 @@
 /project/project
 target/
 .bundledFiles
+.idea
