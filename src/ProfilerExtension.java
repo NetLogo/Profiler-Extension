@@ -86,7 +86,7 @@ public class ProfilerExtension extends org.nlogo.api.DefaultClassManager {
 
   public static class ProfilerReport implements Reporter {
     public Syntax getSyntax() {
-      return SyntaxJ.reporterSyntax(Syntax.ListType());
+      return SyntaxJ.reporterSyntax(Syntax.StringType());
     }
 
     public Object report(Argument args[], Context context) throws ExtensionException {
