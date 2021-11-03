@@ -2,7 +2,7 @@ enablePlugins(org.nlogo.build.NetLogoExtension, org.nlogo.build.ExtensionDocumen
 
 name := "profiler"
 
-version := "1.1.1"
+version := "1.2.0"
 
 netLogoClassManager := "org.nlogo.extensions.profiler.ProfilerExtension"
 
@@ -16,5 +16,4 @@ javaSource in Compile := baseDirectory.value / "src"
 javacOptions ++= Seq("-g", "-Xlint:deprecation", "-Xlint:all", "-Xlint:-serial", "-Xlint:-path",
   "-encoding", "us-ascii", "-source", "1.8", "-target", "1.8")
 
-resolvers      += "netlogo" at "https://dl.cloudsmith.io/public/netlogo/netlogo/maven/"
-netLogoVersion := "6.2.0-d27b502"
+netLogoVersion := "6.2.1"
