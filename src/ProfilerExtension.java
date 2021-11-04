@@ -119,8 +119,8 @@ public class ProfilerExtension extends org.nlogo.api.DefaultClassManager {
             (Object) LogoList.fromJava(Arrays.asList(
               procedureName,
               Double.valueOf(tracer.calls(procedureName)),
-              Double.valueOf(tracer.inclusiveTime(procedureName)),
-              Double.valueOf(tracer.exclusiveTime(procedureName))
+              Double.valueOf(tracer.inclusiveTime(procedureName) / 1E6),
+              Double.valueOf(tracer.exclusiveTime(procedureName) / 1E6)
             ))
           )
         )::iterator);
