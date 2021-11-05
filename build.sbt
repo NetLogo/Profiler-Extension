@@ -2,7 +2,7 @@ enablePlugins(org.nlogo.build.NetLogoExtension, org.nlogo.build.ExtensionDocumen
 
 name := "profiler"
 
-version := "1.2.0"
+version := "1.2.1"
 
 netLogoClassManager := "org.nlogo.extensions.profiler.ProfilerExtension"
 
