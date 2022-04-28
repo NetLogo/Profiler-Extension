@@ -1,8 +1,7 @@
-*.jar
-*.jar.pack.gz
-/classes
-/profiler.zip
-/project/project
-target/
 .bundledFiles
+target/
+extensions/
+/*.jar
+/*.zip
+
 .idea
