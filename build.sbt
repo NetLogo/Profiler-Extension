@@ -6,8 +6,8 @@ name := "profiler"
 version := "1.2.1"
 isSnapshot := true
 
-javaSource in Compile := baseDirectory.value / "src"
+Compile / javaSource := baseDirectory.value / "src"
 javacOptions ++= Seq("-g", "-Xlint:deprecation", "-Xlint:all", "-Xlint:-serial", "-Xlint:-path",
   "-encoding", "us-ascii", "--release", "11")
-netLogoVersion := "6.2.1"
+netLogoVersion := "6.3.0"
 netLogoClassManager := "org.nlogo.extensions.profiler.ProfilerExtension"
