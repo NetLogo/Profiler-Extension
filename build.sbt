@@ -8,5 +8,5 @@ isSnapshot := true
 
 Compile / javaSource := baseDirectory.value / "src"
 javacOptions ++= Seq("-g", "-encoding", "us-ascii", "--release", "11")
-netLogoVersion      := "7.0.0-beta1-c8d671e"
+netLogoVersion      := "7.0.0-beta2-8cd3e65"
 netLogoClassManager := "org.nlogo.extensions.profiler.ProfilerExtension"
