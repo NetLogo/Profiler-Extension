@@ -3,7 +3,7 @@ import org.nlogo.build.{ NetLogoExtension, ExtensionDocumentationPlugin }
 enablePlugins(NetLogoExtension, ExtensionDocumentationPlugin)
 
 name := "profiler"
-version := "1.3.0"
+version := "1.3.1"
 isSnapshot := true
 
 Compile / javaSource := baseDirectory.value / "src"
