@@ -61,7 +61,7 @@ to profile
   repeat 20 [ go ]                               ;; run something you want to measure
   profiler:stop                                  ;; stop profiling
   csv:to-file "profiler_data.csv" profiler:data  ;; save the results
-  profiler:reset                                 ;; clear the data  
+  profiler:reset                                 ;; clear the data
 end
 ```
 
