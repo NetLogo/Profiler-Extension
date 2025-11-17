@@ -1,4 +1,3 @@
-
 # NetLogo Profiler Extension
 
 ## Building
@@ -49,7 +48,7 @@ profiler:reset         ;; clear the data
 ```
 
 Another way to use the profiler is to export its raw data using
-the [`csv` extension](https://ccl.northwestern.edu/netlogo/docs/csv.html)
+the [`csv` extension](https://docs.netlogo.org/csv.html)
 and the `profiler:data` primitive:
 
 ```NetLogo
@@ -83,7 +82,6 @@ REPRODUCE-WOLVES,1039,5.599509,5.599509
 
 Thanks to Roger Peppe for his contributions to the code.
 
-
 ## Primitives
 
 [`profiler:calls`](#profilercalls)
@@ -95,18 +93,14 @@ Thanks to Roger Peppe for his contributions to the code.
 [`profiler:report`](#profilerreport)
 [`profiler:data`](#profilerdata)
 
-
 ### `profiler:calls`
 
 ```NetLogo
 profiler:calls procedure-name
 ```
 
-
-Reports the number of times that *procedure-name* was called. If
-*procedure-name* is not defined, then reports 0.
-
-
+Reports the number of times that _procedure-name_ was called. If
+_procedure-name_ is not defined, then reports 0.
 
 ### `profiler:exclusive-time`
 
@@ -114,16 +108,13 @@ Reports the number of times that *procedure-name* was called. If
 profiler:exclusive-time procedure-name
 ```
 
-
 Reports the exclusive time, in milliseconds, that
-*procedure-name* was running for. Exclusive time is the time
+_procedure-name_ was running for. Exclusive time is the time
 from when the procedure was entered, until it finishes, but does not
 include any time spent in other user-defined procedures which it
 calls.
 
-If *procedure-name* is not defined, then reports 0.
-
-
+If _procedure-name_ is not defined, then reports 0.
 
 ### `profiler:inclusive-time`
 
@@ -131,14 +122,11 @@ If *procedure-name* is not defined, then reports 0.
 profiler:inclusive-time procedure-name
 ```
 
-
 Reports the inclusive time, in milliseconds, that
-*procedure-name* was running for. Inclusive time is the time
+_procedure-name_ was running for. Inclusive time is the time
 from when the procedure was entered, until it finishes.
 
-If *procedure-name* is not defined, then reports 0.
-
-
+If _procedure-name_ is not defined, then reports 0.
 
 ### `profiler:start`
 
@@ -148,7 +136,6 @@ profiler:start
 
 Instructs the profiler to begin recording user-defined procedure calls.
 
-
 ### `profiler:stop`
 
 ```NetLogo
@@ -156,7 +143,6 @@ profiler:stop
 ```
 
 Instructs the profiler to stop recording user-defined procedure calls.
-
 
 ### `profiler:reset`
 
@@ -166,13 +152,11 @@ profiler:reset
 
 Instructs the profiler to erase all collected data.
 
-
 ### `profiler:report`
 
 ```NetLogo
 profiler:report
 ```
-
 
 Reports a string containing a breakdown of all user-defined procedure
 calls. The `Calls` column contains the number of times a
@@ -205,26 +189,21 @@ Name                               Calls Incl T(ms) Excl T(ms) Excl/calls
 CALLTHEM                              13     26.066     19.476      1.498
 ```
 
-
-
 ### `profiler:data`
 
 ```NetLogo
 profiler:data
 ```
 
-
 Reports a list of lists containing the results of the profiler in a format that is suitable
-for exporting with the [`csv` extension](https://ccl.northwestern.edu/netlogo/docs/csv.html).
+for exporting with the [`csv` extension](/csv).
 
 The first sublist contains the name of the data columns: `procedure`, `calls`, `inclusive_time` and
 `exclusive_time`. This is followed by one sublist containing the profiler data for each user-defined
 procedure. The reported times are in milliseconds.
 
-
-
 ## Terms of Use
 
 [![CC0](http://i.creativecommons.org/p/zero/1.0/88x31.png)](http://creativecommons.org/publicdomain/zero/1.0/)
 
-The NetLogo profiler extension is in the public domain.  To the extent possible under law, Uri Wilensky has waived all copyright and related or neighboring rights.
+The NetLogo profiler extension is in the public domain. To the extent possible under law, Uri Wilensky has waived all copyright and related or neighboring rights.
