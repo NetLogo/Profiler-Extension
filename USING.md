@@ -38,7 +38,7 @@ profiler:reset         ;; clear the data
 ```
 
 Another way to use the profiler is to export its raw data using
-the [`csv` extension](https://ccl.northwestern.edu/netlogo/docs/csv.html)
+the [`csv` extension](https://docs.netlogo.org/csv.html)
 and the `profiler:data` primitive:
 
 ```NetLogo
@@ -71,4 +71,3 @@ REPRODUCE-WOLVES,1039,5.599509,5.599509
 ```
 
 Thanks to Roger Peppe for his contributions to the code.
-
