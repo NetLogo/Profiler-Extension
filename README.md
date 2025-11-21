@@ -196,7 +196,7 @@ profiler:data
 ```
 
 Reports a list of lists containing the results of the profiler in a format that is suitable
-for exporting with the [`csv` extension](/csv).
+for exporting with the [`csv` extension](https://docs.netlogo.org/csv.html).
 
 The first sublist contains the name of the data columns: `procedure`, `calls`, `inclusive_time` and
 `exclusive_time`. This is followed by one sublist containing the profiler data for each user-defined
