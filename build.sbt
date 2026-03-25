@@ -3,7 +3,7 @@ import org.nlogo.build.{ NetLogoExtension, ExtensionDocumentationPlugin }
 enablePlugins(NetLogoExtension, ExtensionDocumentationPlugin)
 
 name := "profiler"
-version := "1.3.1"
+version := "1.3.2"
 isSnapshot := true
 
 scalaVersion := "3.7.0"
