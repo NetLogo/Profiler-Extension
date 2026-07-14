@@ -1,5 +1,3 @@
-package org.nlogo.extensions.profiler;
-
 public class CallRecord {
   public String name;
   public long jobID;

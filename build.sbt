@@ -14,4 +14,4 @@ Compile / javaSource := baseDirectory.value / "src" / "java"
 javacOptions ++= Seq("-g", "-encoding", "us-ascii", "--release", "21")
 
 netLogoVersion      := "7.0.0-beta2-7e8f7a4"
-netLogoClassManager := "org.nlogo.extensions.profiler.ProfilerExtension"
+netLogoClassManager := "ProfilerExtension"

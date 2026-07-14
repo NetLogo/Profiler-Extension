@@ -1,5 +1,3 @@
-package org.nlogo.extensions.profiler;
-
 import java.util.Collections;
 import java.util.HashMap;
 import java.util.Iterator;

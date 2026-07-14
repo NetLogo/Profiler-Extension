@@ -1,5 +1,3 @@
-package org.nlogo.extensions.profiler
-
 import java.io.{ ByteArrayOutputStream, PrintStream }
 import java.util.Arrays
 import java.util.stream.Stream

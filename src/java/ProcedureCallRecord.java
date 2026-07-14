@@ -1,5 +1,3 @@
-package org.nlogo.extensions.profiler;
-
 public class ProcedureCallRecord extends CallRecord {
   public String fileName;
   public int pos;
