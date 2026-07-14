@@ -2,7 +2,7 @@ import org.nlogo.build.{ NetLogoExtension, ExtensionDocumentationPlugin }
 
 enablePlugins(NetLogoExtension, ExtensionDocumentationPlugin)
 
-name := "profiler"
+name := "profilo"
 version := "1.3.2"
 isSnapshot := true
 
